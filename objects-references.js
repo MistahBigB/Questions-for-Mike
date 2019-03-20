@@ -1,18 +1,21 @@
-let myAccount = {
+let account = {
     name: 'Brandon B',
     expenses: 0,
     income: 0,
     balance: 0
 }
 //get an initial summary
-/* let getSummary = function (account) {
+let getSummary = function (account) {
     return{
-    summary: `${name} has a $${balance} credit, with $${income} in income, and $${expenses} in expenses.`
+    summary: `${account.name} has $${account.income} in income, and $${account.expenses} in expenses.`
     } 
 }
-let accountSummary = getSummary(myAccount)
-console.log(accountsummary.balance)
- */
+let calcBalance = function (account) {
+    account.balance = account.income - account.expenses
+}
+let accountSummary = getSummary(account)
+console.log(accountSummary.summary)
+
 //addExpense
 let addExpense = function (account, amount) {
     account.expenses = account.expenses + amount
@@ -24,32 +27,31 @@ let addIncome = function (account, bigBucks) {
     
 }
 
-addExpense(myAccount, 2.50)
-addIncome(myAccount, 1000)
-let calcBalance = function (account) {
-    account.balance = account.income - account.expenses
-}
+addExpense(account, 2.50)
+addIncome(account, 1000)
+calcBalance(account)
 
 
 //get statement
-let getSummary = function (){
-    return{
-    summary: `${name} has a $${balance} credit, with $${income} in income, and $${expenses} in expenses.`
-    } 
-}
-let accountSummary = getSummary(myAccount)
+console.log(`${account.name} has a $${account.balance} credit, with $${account.income} in income, and $${account.expenses} in expenses.`)
+//getSummary(account) --> If I comment out the above line and uncomment this line, why doesn't it show the new values for object account?
+
 
 //reset account
 //an alternative would be to set account.X = account.X - account.X
+
+
 let resetExpenses = function (account) {
     account.expenses = 0
 }
 let resetIncome = function (account) {
     account.income = 0
 }    
-resetExpenses(myAccount)
-resetIncome(myAccount)
-console.log(myAccount)
+
+resetExpenses(account)
+resetIncome(account)
+calcBalance(account)
+console.log(account)
 console.log('GONE! ALLLLL GONE!!!!')
 
 
@@ -57,4 +59,4 @@ console.log('GONE! ALLLLL GONE!!!!')
 /* 
 addExpense(myAccount, 2.50)
 addIncome(myAccount, 1000)
-console.log(myAccount) */
+console.log(myAccount) */ 
